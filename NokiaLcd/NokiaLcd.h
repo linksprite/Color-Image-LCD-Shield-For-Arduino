@@ -9,10 +9,15 @@
 #include <util/delay.h>
 
 #include <inttypes.h>
+#ifndef PCDUINO_IDE
 #include <Arduino.h>
-#include <./src/font.h>
+#else 
+#include <core.h>
+#endif
 
-using namespace std
+#include <font.h>
+
+using namespace std;
 
 //********************************************************************
 //
@@ -141,8 +146,6 @@ using namespace std
 
 #define BACKGROUND_REPLACE 0x80000000
 
-
-
 typedef struct
 {
 	unsigned char red;
@@ -159,10 +162,18 @@ public:
 	
 	~PCF8833Lcd();
 
+	void OFF(void);
+
+    void ON(void);
+
 	void sendCmd(uint8_t cmd);
 	
 	void sendData(uint8_t data);
-	  
+
+	void Contrast(char setting);
+
+	uint16_t SwapColors(uint16_t in); 
+	
 	void init(bool colorSwap = 0);
 		
 	void begin(void);
@@ -170,53 +181,35 @@ public:
 	void SetPixel(uint16_t color, unsigned char x, unsigned char y);
 	  
 	void ClearScring(uint16_t color);
+
+	void DrawCircle (int x0, int y0, int radius, int color);
 	
-	void PutChar(unsigned char  x,unsigned char  y,char data,uint16_t color,uint16_t backGround);
+	void PutChar(char c, int x, int y, int fColor, int bColor);
+
+	void PutStr(char *pString, int x, int y, int fColor, int bColor);
+
+	void DrawLine(int x0, int y0, int x1, int y1, int color);
+
+	void DrawRect(int x0, int y0, int x1, int y1, unsigned char fill, int color);
 	
 	void printf(unsigned char  x,unsigned char  y,uint16_t color,uint16_t backGround,const char* fmt,...);
 	  
 private:
-	
-	  
+
 	uint8_t _rst_pin; 
 	uint8_t _cs_pin; 
 	uint8_t _sck_pin; 
 	uint8_t _sdio_pin;
 	
-	uint8_t CurrentX;
-	uint8_t CurrentY;
-	uint32_t backGroundColor[FONT_HEIGHT][FONT_WIDE];
+	//uint8_t CurrentX;
+	//uint8_t CurrentY;
+	//uint32_t backGroundColor[FONT_HEIGHT][FONT_WIDE];
 	 
 };
 
 
-class SD15G10Lcd :public PCF8833Lcd{
-public:
-  SD15G10Lcd(uint8_t rst,uint8_t cs,uint8_t sck,uint8_t sdio):
-  	PCF8833Lcd(uint8_t rst,uint8_t cs,uint8_t sck,uint8_t sdio);
-
-  ~SD15G10Lcd();
-  
-  void init(void);
-    
-  void begin(void);
-
-  void SetPixel(uint16_t color, unsigned char x, unsigned char y);
-	  
-  void ClearScring(uint16_t color);
-  
-private:
-  
-  uint8_t _rst_pin; 
-  uint8_t _cs_pin; 
-  uint8_t _sck_pin; 
-  uint8_t _sdio_pin;
-
-  uint8_t CurrentX;
-  uint8_t CurrentY;
-  uint32_t backGroundColor[FONT_HEIGHT][FONT_WIDE];
- 
-};
 
 #endif
+
+
 
