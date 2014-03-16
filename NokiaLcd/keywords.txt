@@ -1,0 +1,62 @@
+#######################################
+# Syntax Coloring Map For NokiaLcd
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+PCF8833Lcd	KEYWORD1
+SD15G10Lcd	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+init	KEYWORD2
+sendCmd	KEYWORD2
+sendData	KEYWORD2
+SwapColors	KEYWORD2
+DrawCircle	KEYWORD2
+PutChar	KEYWORD2
+PutStr	KEYWORD2
+DrawLine	KEYWORD2
+DrawRect	KEYWORD2
+printf	KEYWORD2
+Contrast 	KEYWORD2
+SetPixel	KEYWORD2
+ClearScring	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+BLACK	KEYWORD3
+NAVY	KEYWORD3
+BLUE	KEYWORD3
+TEAL	KEYWORD3
+EMERALD	KEYWORD3
+GREEN	KEYWORD3
+CYAN	KEYWORD3
+SLATE	KEYWORD3
+INDIGO	KEYWORD3
+TURQUOISE	KEYWORD3
+OLIVE	KEYWORD3
+MAROON	KEYWORD3
+PURPLE	KEYWORD3
+GRAY	KEYWORD3
+SKYBLUE	KEYWORD3
+BROWN	KEYWORD3
+CRIMSON	KEYWORD3
+ORCHID	KEYWORD3
+RED	KEYWORD3
+MAGENTA	KEYWORD3
+ORANGE	KEYWORD3
+PINK	KEYWORD3
+CORAL	KEYWORD3
+SALMON	KEYWORD3
+GOLD	KEYWORD3
+YELLOW	KEYWORD3
+WHITE	KEYWORD3
+
